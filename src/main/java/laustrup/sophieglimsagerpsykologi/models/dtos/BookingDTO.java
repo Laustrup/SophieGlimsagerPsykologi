@@ -1,13 +1,15 @@
 package laustrup.sophieglimsagerpsykologi.models.dtos;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
 import laustrup.sophieglimsagerpsykologi.models.Booking;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 import java.time.LocalDateTime;
 
-@ToString
+@ToString @NoArgsConstructor
 public class BookingDTO {
 
     @Getter
@@ -47,6 +49,7 @@ public class BookingDTO {
         this.timestamp = timestamp;
     }
 
+    @JsonCreator(mode = JsonCreator.Mode.PROPERTIES)
     public BookingDTO(LocalDateTime start, LocalDateTime end, Booking.Subject subject,
                       ClientDTO client, String title, String description) {
         this.start = start;

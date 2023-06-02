@@ -14,11 +14,11 @@ public class BookingRepository extends Repository {
         edit(
             (hasClient ?
                 "INSERT INTO clients(" +
-                    "id," +
+                    "`id`," +
                     "`name`," +
                     "`email`," +
-                    "birthdate," +
-                    "consultation" +
+                    "`birthdate`," +
+                    "`consultation`" +
                 ") " +
                 "VALUES(" +
                     booking.get_client().get_id() + ",'" +
@@ -28,15 +28,15 @@ public class BookingRepository extends Repository {
                 ") ON DUPLICATE KEY UPDATE " +
                     "`name` = '" + booking.get_client().get_name() + "'," +
                     "`email` = '" + booking.get_client().get_email() + "'," +
-                    "birthdate = '" + booking.get_client().get_birthdate().toString() + "'," +
-                    "consultation = '" + booking.get_client().get_consultation() + "';"
+                    "`birthdate` = '" + booking.get_client().get_birthdate().toString() + "'," +
+                    "`consultation` = '" + booking.get_client().get_consultation() + "';"
             : "") +
             "INSERT INTO bookings(" +
-                (hasClient ? "client_id," : "") +
+                (hasClient ? "`client_id`," : "") +
                 "`start`," +
                 "`end`," +
                 "`subject`," +
-                "title," +
+                "`title`," +
                 "`description`," +
                 "`timestamp`" +
             ") " +
@@ -50,11 +50,11 @@ public class BookingRepository extends Repository {
                 "NOW()" +
             ") " +
             "ON DUPLICATE KEY UPDATE " +
-                "client_id = " + (hasClient ? booking.get_client().get_id() : "NULL") + ", " +
+                "`client_id` = " + (hasClient ? booking.get_client().get_id() : "NULL") + ", " +
                 "`start` = '" + booking.get_start().toString() + "', " +
                 "`end` = '" + booking.get_end().toString() + "', " +
                 "`subject` = '" + booking.get_subject() + "', " +
-                "title = '" + booking.get_title() + "', " +
+                "`title` = '" + booking.get_title() + "', " +
                 "`description` = '" + booking.get_description() + "'" +
             "; "
         );
@@ -67,14 +67,14 @@ public class BookingRepository extends Repository {
     public ResultSet get() { return get(new String()); }
 
     public ResultSet get(boolean isBooked) {
-        return get("WHERE client_id IS " + (isBooked ? "NOT " : " ") + "NULL AND `end` > NOW()");
+        return get("WHERE `client_id` IS " + (isBooked ? "NOT " : " ") + "NULL AND `end` > NOW()");
     }
 
     private ResultSet get(String where) {
-        return read("SELECT * FROM bookings LEFT JOIN ON bookings.client_id = clients.id " + where + ";");
+        return read("SELECT * FROM `bookings` LEFT JOIN ON `bookings`.`client_id` = `clients`.`id` " + where + ";");
     }
 
     public boolean delete(Booking booking) {
-        return edit("DELETE FROM bookings WHERE `start` = '" + booking.get_start().toString() + "' AND `end` = '" + booking.get_end().toString() + "';");
+        return edit("DELETE FROM `bookings` WHERE `start` = '" + booking.get_start().toString() + "' AND `end` = '" + booking.get_end().toString() + "';");
     }
 }

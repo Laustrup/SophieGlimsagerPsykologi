@@ -1,7 +1,9 @@
 package laustrup.sophieglimsagerpsykologi;
 
 import laustrup.sophieglimsagerpsykologi.repositories.DbLibrary;
+
 import lombok.Getter;
+import lombok.Setter;
 
 /**
  * Contains information about the program and its states.
@@ -47,8 +49,8 @@ public class Program {
      * If it's testing, connection will be in memory H2 db for testing purpose,
      * otherwise it will run with the connection that is set.
      */
-    @Getter
-    private static State _state = State.PRODUCTION;
+    @Getter @Setter
+    private State _state = State.PRODUCTION;
 
     /**
      * Will set the testing mode state, but only if the application hasn't started yet.

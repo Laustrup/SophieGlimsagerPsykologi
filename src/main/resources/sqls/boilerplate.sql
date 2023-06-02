@@ -1,12 +1,8 @@
 CREATE SCHEMA IF NOT EXISTS `sophie_glimsager_psykologi_db`;
 USE `sophie_glimsager_psykologi_db`;
 
-DROP TABLE IF EXISTS `clients`;
-DROP TABLE IF EXISTS `bookings`;
-DROP TABLE IF EXISTS `admin`;
-
 CREATE TABLE `clients`(
-    `id` INT(9) NOT NULL AUTO_INCREMENT,
+    `id` BIGINT(9) NOT NULL AUTO_INCREMENT,
     `name` VARCHAR(35) NOT NULL,
     `email` VARCHAR(35) NOT NULL,
     `birthdate` DATE NOT NULL,

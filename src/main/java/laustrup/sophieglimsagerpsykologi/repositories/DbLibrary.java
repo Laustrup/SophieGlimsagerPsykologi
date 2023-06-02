@@ -31,8 +31,13 @@ public class DbLibrary extends H2Config {
     private boolean _setupIsConfigured = false;
 
     /** Value for the DbGate with the purpose of creating a connection. */
-    @Getter
-    private final String _path = set_path();
+    private String _path = get_path();
+
+    public String get_path() {
+        _path = set_path();
+        return _path;
+    }
+
     @Getter
     private String _user = Program.get_instance().get_state().equals(Program.State.TESTING) ? "sa" : Defaults.get_instance().get_dbUser();
     @Getter
@@ -97,14 +102,12 @@ public class DbLibrary extends H2Config {
      * @return The collected string.
      */
     public String set_path() {
-        if (Program.get_instance().get_state().equals(Program.State.TESTING))
-            h2InitScript();
-
         return "jdbc:" +
                 (Program.get_instance().get_state().equals(Program.State.TESTING)
                         ? "h2:mem:TESTING" +
                         ";CACHE_SIZE=8192;DB_CLOSE_ON_EXIT=FALSE;AUTO_RECONNECT=TRUE;DB_CLOSE_DELAY=-1;" + h2InitRunScript()
-                        : "mysql://" + _location + ":" + _port + "/" + _schema + _allowMultipleQueries);
+                        : "h2:mem:TESTING");
+                        //"mysql://" + _location + ":" + _port + "/" + _schema + _allowMultipleQueries);
     }
 
     /**

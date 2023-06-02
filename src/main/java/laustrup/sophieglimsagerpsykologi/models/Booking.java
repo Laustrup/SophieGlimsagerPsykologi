@@ -30,7 +30,7 @@ public class Booking {
     private Client _client;
 
     public Booking(BookingDTO dto) {
-        this(dto.getStart(),dto.getEnd(),dto.getSubject(),new Client(dto.getClient()),
+        this(dto.getStart(),dto.getEnd(),dto.getSubject(),dto.getClient() != null ? new Client(dto.getClient()) : null,
                 dto.getTitle(), dto.getDescription(), dto.getTimestamp()
         );
     }

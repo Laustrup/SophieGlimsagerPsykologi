@@ -8,7 +8,8 @@ public class SophieGlimsagerPsykologiApplication {
 
     public static void main(String[] args) {
         Program.get_instance().setTestingMode(true);
-        Program.get_instance().applicationIsRunning();
         SpringApplication.run(SophieGlimsagerPsykologiApplication.class, args);
+        Program.get_instance().applicationIsRunning();
+        Program.get_instance().set_state(Program.State.PRODUCTION);
     }
 }

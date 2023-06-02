@@ -137,6 +137,7 @@ class H2Init {
                 new String[]{"BIGINT(17)", "BIGINT"},
                 new String[]{"BIGINT(16)", "BIGINT"},
                 new String[]{"BIGINT(15)", "BIGINT"},
+                new String[]{"BIGINT(9)", "BIGINT"},
                 new String[]{"`","\""},
                 new String[]{"--",""},
                 new String[]{"         "," "},

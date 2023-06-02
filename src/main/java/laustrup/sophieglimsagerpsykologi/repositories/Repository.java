@@ -88,7 +88,7 @@ public abstract class Repository extends DbTranslator {
      * @return The fixed SQL.
      */
     private String handleSQL(String sql) {
-        return Program.get_state().equals(Program.State.TESTING)
+        return Program.get_instance().get_state().equals(Program.State.TESTING)
                 ? DbLibrary.get_instance().translateMySQLIntoH2(sql)
                 : sql;
     }

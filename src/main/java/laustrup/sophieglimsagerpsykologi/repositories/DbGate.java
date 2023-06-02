@@ -1,5 +1,6 @@
 package laustrup.sophieglimsagerpsykologi.repositories;
 
+import laustrup.sophieglimsagerpsykologi.Program;
 import laustrup.utilities.console.Printer;
 import laustrup.utilities.parameters.Plato;
 import lombok.Getter;

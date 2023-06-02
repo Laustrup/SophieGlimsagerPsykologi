@@ -1,10 +1,14 @@
 package laustrup.sophieglimsagerpsykologi.models.dtos;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
 import laustrup.sophieglimsagerpsykologi.models.Client;
+
 import lombok.Getter;
+import lombok.ToString;
 
 import java.time.LocalDate;
 
+@ToString
 public class ClientDTO {
 
     @Getter
@@ -27,6 +31,7 @@ public class ClientDTO {
         age = client.get_age();
     }
 
+    @JsonCreator(mode = JsonCreator.Mode.PROPERTIES)
     public ClientDTO(long id, String name, String email, LocalDate birthdate, int phone, Client.Consultation consultation) {
         this.id = id;
         this.name = name;
