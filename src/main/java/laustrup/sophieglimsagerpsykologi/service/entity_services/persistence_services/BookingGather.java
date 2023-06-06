@@ -13,17 +13,21 @@ public class BookingGather {
     public Liszt<Booking> gather(ResultSet set) {
         Liszt<Booking> bookings = new Liszt<>();
 
-        try {
-            while (set.next()) {
-                Booking booking = booking(set);
-                if (booking != null && !bookings.contains(booking))
-                    bookings.add(booking);
+        if (set != null) {
+            try {
+                while (set.next()) {
+                    Booking booking = booking(set);
+                    if (booking != null && !bookings.contains(booking))
+                        bookings.add(booking);
+                }
+            }
+            catch (SQLException e) {
+                Printer.get_instance().print("Exception in next() method when constructing bookings...",e);
+                return null;
             }
         }
-        catch (SQLException e) {
-            Printer.get_instance().print("Exception in next() method when constructing bookings...",e);
+        else
             return null;
-        }
 
         return bookings;
     }
@@ -51,6 +55,9 @@ public class BookingGather {
     }
 
     private Client client(ResultSet set) throws SQLException {
+        if (set.getLong("id") == 0)
+            return null;
+
         return new Client(
             set.getLong("id"),
             set.getString("name"),

@@ -3,6 +3,7 @@ package laustrup.sophieglimsagerpsykologi.repositories;
 import laustrup.sophieglimsagerpsykologi.Defaults;
 import laustrup.sophieglimsagerpsykologi.Program;
 import laustrup.sophieglimsagerpsykologi.repositories.h2.H2Config;
+
 import lombok.Getter;
 
 /**
@@ -11,6 +12,9 @@ import lombok.Getter;
  * Extends H2Config, that configures the embedded database used for testing purposes.
  */
 public class DbLibrary extends H2Config {
+
+    boolean hasInitialized = false;
+
 
     /** Will allow a SQL statement to have multiple queries at once. */
     private String _allowMultipleQueries = Defaults.get_instance().get_sqlAllowMultipleQueries();
@@ -95,6 +99,7 @@ public class DbLibrary extends H2Config {
             return "\tConfigurations were not allowed...";
     }
 
+
     /**
      * Collects a string of a path to the database from the necessarily fields needed,
      * therefore the path should be set after location, port, schema and allow multiple queries.
@@ -102,11 +107,13 @@ public class DbLibrary extends H2Config {
      * @return The collected string.
      */
     public String set_path() {
-        return "jdbc:" +
-                (Program.get_instance().get_state().equals(Program.State.TESTING)
-                        ? "h2:mem:TESTING" +
-                        ";CACHE_SIZE=8192;DB_CLOSE_ON_EXIT=FALSE;AUTO_RECONNECT=TRUE;DB_CLOSE_DELAY=-1;" + h2InitRunScript()
-                        : "h2:mem:TESTING");
+        boolean doInitializeH2Script = Program.get_instance().get_state().equals(Program.State.TESTING) && !hasInitialized;
+        if (doInitializeH2Script && !Program.get_instance().is_applicationIsRunning())
+            h2InitScript();
+
+        return "jdbc:h2:mem:TESTING;DB_CLOSE_DELAY=-1;mode=MySQL" +
+                (doInitializeH2Script && !Program.get_instance().is_applicationIsRunning()
+                        ? ";" + h2InitRunScript() : ";SCHEMA=\"" + Defaults.get_instance().get_dbSchema() + "\"");
                         //"mysql://" + _location + ":" + _port + "/" + _schema + _allowMultipleQueries);
     }
 

@@ -1,5 +1,6 @@
 package laustrup.sophieglimsagerpsykologi.repositories.sub_reposities;
 
+import laustrup.sophieglimsagerpsykologi.Defaults;
 import laustrup.sophieglimsagerpsykologi.models.Booking;
 import laustrup.sophieglimsagerpsykologi.repositories.Repository;
 
@@ -70,11 +71,17 @@ public class BookingRepository extends Repository {
         return get("WHERE `client_id` IS " + (isBooked ? "NOT " : " ") + "NULL AND `end` > NOW()");
     }
 
+    //TODO Should not need the schema name, H2 schema should be further described.
     private ResultSet get(String where) {
-        return read("SELECT * FROM `bookings` LEFT JOIN ON `bookings`.`client_id` = `clients`.`id` " + where + ";");
+        String schema = "`" + Defaults.get_instance().get_dbSchema() + "`";
+        return read(
+                "SELECT * FROM " + schema + ".bookings " +
+                "LEFT JOIN " + schema + ".clients ON " + schema + ".bookings.`client_id` = " + schema + ".clients.`id` " +
+                where + ";"
+        );
     }
 
     public boolean delete(Booking booking) {
-        return edit("DELETE FROM `bookings` WHERE `start` = '" + booking.get_start().toString() + "' AND `end` = '" + booking.get_end().toString() + "';");
+        return edit("DELETE FROM bookings WHERE `start` = '" + booking.get_start().toString() + "' AND `end` = '" + booking.get_end().toString() + "';");
     }
 }

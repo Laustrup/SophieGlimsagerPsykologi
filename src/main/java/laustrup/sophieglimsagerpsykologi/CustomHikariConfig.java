@@ -15,10 +15,11 @@ import java.util.Properties;
 public class CustomHikariConfig extends HikariConfig {
 
     /**
-     * Sets driverClassName, JdbcURL, User, Password and PoolName of this configuration.
+     * Sets driverClassName, Schema, JdbcURL, User, Password and PoolName of this configuration.
      */
     private void setup() {
         setDriverClassName(DbLibrary.get_instance().get_driverClassName());
+        setSchema(Defaults.get_instance().get_dbSchema());
         setJdbcUrl(DbLibrary.get_instance().get_path());
         setUsername(DbLibrary.get_instance().get_user());
         setPassword(DbLibrary.get_instance().get_password());

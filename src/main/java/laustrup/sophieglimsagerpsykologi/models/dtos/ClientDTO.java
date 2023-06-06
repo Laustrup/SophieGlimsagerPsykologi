@@ -27,8 +27,16 @@ public class ClientDTO {
     private Client.Consultation consultation;
 
     public ClientDTO(Client client) {
-        this(client.get_id(), client.get_name(), client.get_email(), client.get_birthdate(), client.get_phone(), client.get_consultation());
-        age = client.get_age();
+        this(
+            client != null ? client.get_id() : 0,
+            client != null ? client.get_name() : null,
+            client != null ? client.get_email() : null,
+            client != null ? client.get_birthdate() : null,
+            client != null ? client.get_phone() : 0,
+            client != null ? client.get_consultation() : null
+        );
+
+        age = client != null ? client.get_age() : 0;
     }
 
     @JsonCreator(mode = JsonCreator.Mode.PROPERTIES)

@@ -6,6 +6,8 @@ import laustrup.sophieglimsagerpsykologi.repositories.sub_reposities.BookingRepo
 import laustrup.sophieglimsagerpsykologi.service.entity_services.persistence_services.BookingGather;
 import laustrup.utilities.collections.lists.Liszt;
 
+import java.sql.ResultSet;
+
 public class BookingService {
 
     private final BookingRepository _repository = new BookingRepository();
@@ -13,25 +15,29 @@ public class BookingService {
 
     public Booking upsert(Booking booking) {
         _repository.upsert(booking);
-        booking = _gather.gather(_repository.get(booking.get_start(),booking.get_end())).getFirst();
+        ResultSet set = _repository.get(booking.get_start(),booking.get_end());
+        booking = set != null ? _gather.gather(set).getFirst() : null;
         DbGate.get_instance().close();
         return booking;
     }
 
     public Liszt<Booking> getAppointments() {
-        Liszt<Booking> appointments = _gather.gather(_repository.get(true));
+        ResultSet set = _repository.get(true);
+        Liszt<Booking> appointments = set != null ? _gather.gather(set) : null;
         DbGate.get_instance().close();
         return appointments;
     }
 
     public Liszt<Booking> getAvailable() {
-        Liszt<Booking> available = _gather.gather(_repository.get(false));
+        ResultSet set = _repository.get(false);
+        Liszt<Booking> available = set != null ? _gather.gather(set) : null;
         DbGate.get_instance().close();
         return available;
     }
 
     public Liszt<Booking> get() {
-        Liszt<Booking> bookings = _gather.gather(_repository.get());
+        ResultSet set = _repository.get();
+        Liszt<Booking> bookings = set != null ? _gather.gather(set) : null;
         DbGate.get_instance().close();
         return bookings;
     }

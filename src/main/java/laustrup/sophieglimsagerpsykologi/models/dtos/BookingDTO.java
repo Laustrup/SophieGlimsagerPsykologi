@@ -31,8 +31,14 @@ public class BookingDTO {
     private ClientDTO client;
 
     public BookingDTO(Booking booking) {
-        this(booking.get_start(),booking.get_end(),booking.get_subject(), new ClientDTO(booking.get_client()),
-                booking.get_title(), booking.get_description(), booking.get_timestamp()
+        this(
+            booking != null ? booking.get_start() : null,
+            booking != null ? booking.get_end() : null,
+            booking != null ? booking.get_subject() : null,
+            booking != null ? new ClientDTO(booking.get_client()) : null,
+            booking != null ? booking.get_title() : null,
+            booking != null ? booking.get_description() : null,
+            booking != null ? booking.get_timestamp() : null
         );
         booked = booking.is_booked();
         length = booking.get_length();

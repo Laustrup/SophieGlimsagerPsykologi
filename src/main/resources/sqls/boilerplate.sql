@@ -1,12 +1,17 @@
 CREATE SCHEMA IF NOT EXISTS `sophie_glimsager_psykologi_db`;
 USE `sophie_glimsager_psykologi_db`;
 
-CREATE TABLE `clients`(
+DROP TABLE IF EXISTS bookings;
+DROP TABLE IF EXISTS clients;
+DROP TABLE IF EXISTS admin;
+
+CREATE TABLE clients(
     `id` BIGINT(9) NOT NULL AUTO_INCREMENT,
     `name` VARCHAR(35) NOT NULL,
     `email` VARCHAR(35) NOT NULL,
     `birthdate` DATE NOT NULL,
-    `consultation` ENUM('ONLINE',
+    `consultation` ENUM(
+        'ONLINE',
         'PHONE',
         'PHYSICAL'
     ) NOT NULL,
@@ -14,7 +19,7 @@ CREATE TABLE `clients`(
     PRIMARY KEY(`id`)
 );
 
-CREATE TABLE `bookings`(
+CREATE TABLE bookings(
     `client_id` INT(9),
     `start` DATETIME NOT NULL,
     `end` DATETIME NOT NULL,
@@ -28,10 +33,10 @@ CREATE TABLE `bookings`(
     `description` VARCHAR(250),
     `timestamp` DATETIME NOT NULL,
 
-    PRIMARY KEY(`start`,`end`),
-    FOREIGN KEY(`client_id`) REFERENCES `clients`(`id`)
+     PRIMARY KEY(`start`,`end`),
+     FOREIGN KEY(`client_id`) REFERENCES clients(`id`)
 );
 
-CREATE TABLE `admin`(
+CREATE TABLE admin(
     `password` VARCHAR(25)
 );

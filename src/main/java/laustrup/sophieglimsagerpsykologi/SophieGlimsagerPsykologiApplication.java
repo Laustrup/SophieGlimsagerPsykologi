@@ -10,6 +10,5 @@ public class SophieGlimsagerPsykologiApplication {
         Program.get_instance().setTestingMode(true);
         SpringApplication.run(SophieGlimsagerPsykologiApplication.class, args);
         Program.get_instance().applicationIsRunning();
-        Program.get_instance().set_state(Program.State.PRODUCTION);
     }
 }

@@ -59,8 +59,8 @@ class H2Init {
     private String[][] mySQLTranslations() {
         try {
             return convertCollectionIntoLines(generateCollection(
-                            FileService.get_instance().getContent(_sqlDirectory, "boilerplate.sql") +
-                                    FileService.get_instance().getContent(_sqlDirectory, "default_values.sql")
+                            FileService.get_instance().getContent(_sqlDirectory, "boilerplate.sql") //+
+                                    //FileService.get_instance().getContent(_sqlDirectory, "default_values.sql")
                     )
             );
         } catch (Exception e) {
