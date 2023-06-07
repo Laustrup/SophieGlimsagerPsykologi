@@ -1,0 +1,27 @@
+header {
+    padding: 2%;
+    border-bottom: 1px;
+    border-bottom: 2px dotted;
+    border-bottom: medium solid #24252A;
+}
+
+header a {
+    text-decoration: none;
+}
+
+#logo_and_tabs {
+    display: flex;
+    justify-content:flex-start;
+    gap: 2rem;
+}
+
+#logo_section {
+    display: flex;
+    justify-content: left;
+    gap: 2rem;
+}
+
+#tabs {
+    display: flex;
+    gap: 2rem;
+}
