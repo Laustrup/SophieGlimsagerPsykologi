@@ -44,7 +44,9 @@ public class BookingService {
 
     public boolean delete(Booking booking) {
         boolean success = _repository.delete(booking);
-        DbGate.get_instance().close();
+        if (success)
+            DbGate.get_instance().close();
+
         return success;
     }
 }

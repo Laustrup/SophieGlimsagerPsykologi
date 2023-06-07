@@ -36,7 +36,7 @@ public class BookingController {
     }
 
     @DeleteMapping(value = _endpointDirectory + "delete", consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Boolean> delete(@RequestBody BookingDTO booking) {
+    public ResponseEntity<BookingDTO[]> delete(@RequestBody BookingDTO booking) {
         return _service.delete(new Booking(booking));
     }
 }
