@@ -1,6 +1,6 @@
 const isLocal = true;
 
-const domain = "http://" + isLocal ? "localhost:8080/" : "www.sophie_glimsager_psykologi.dk/";
+const domain = "http://" + (isLocal ? "localhost:8080/" : "www.sophie_glimsager_psykologi.dk/");
 
 // View
 const welcomeURL = domain + "velkommen",
@@ -9,10 +9,16 @@ const welcomeURL = domain + "velkommen",
       contactURL = domain + "kontakt",
       treatmentURL = domain + "behandlingsområder",
       bookingURL = domain + "booking/afmeld_tider",
+      faqURL = domain + "faq",
       adminURL = domain + "admin";
 
 function bookingQuery(params) {
     return domain + "?start=" + params.start + "/?slut=" + params.end + (params.clientId != null ? "?klient=" + params.clientId : "");
+}
+
+function changeURL(href) {
+    window.location.href = href;
+    render();
 }
 
 // API

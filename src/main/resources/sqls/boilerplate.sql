@@ -38,5 +38,8 @@ CREATE TABLE bookings(
 );
 
 CREATE TABLE admin(
-    `password` VARCHAR(25)
+    `password` VARCHAR(25),
+    `email` VARCHAR(30),
+    `telephone` INT(8),
+    `address` VARCHAR(40)
 );

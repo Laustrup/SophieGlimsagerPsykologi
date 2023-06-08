@@ -1,4 +1,5 @@
 function renderFooter() {
+
     document.getElementById("footer_content").innerHTML = `
         <section id="footer_left">
             <table id="contact_info_footer">
@@ -10,9 +11,6 @@ function renderFooter() {
                 </tr>
                 <tr class="footer_row">
                     <td class="description">Telefon: +45 60548098</td>
-                </tr>
-                <tr class="footer_row">
-                    <td class="description">Land: Danmark</td>
                 </tr>
                 <tr class="footer_row">
                     <td class="description">Adresse: <a href="https://www.google.com/maps?client=firefox-b-d&q=n%C3%B8rre+boulevard+98+k%C3%B8ge&um=1&ie=UTF-8&sa=X&ved=2ahUKEwi-8ouNl9j7AhUSXfEDHSQSDuUQ_AUoAXoECAIQAw">

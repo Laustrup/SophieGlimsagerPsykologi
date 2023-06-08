@@ -1,17 +1,18 @@
 header {
+    background-color: #545454;
     padding: 2%;
-    border-bottom: 1px;
-    border-bottom: 2px dotted;
-    border-bottom: medium solid #24252A;
+
 }
 
-header a {
+header * {
+    background-color: #545454;
+    color: white;
     text-decoration: none;
 }
 
 #logo_and_tabs {
     display: flex;
-    justify-content:flex-start;
+    justify-content:space-between;
     gap: 2rem;
 }
 
@@ -24,4 +25,8 @@ header a {
 #tabs {
     display: flex;
     gap: 2rem;
+}
+
+#tabs a:hover {
+    text-decoration: underline;
 }
