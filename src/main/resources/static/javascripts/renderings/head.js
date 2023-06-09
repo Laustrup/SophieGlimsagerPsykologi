@@ -3,7 +3,7 @@ function renderHead() {
     const mainTitle = "Sophie Glimsager";
 
     switch (endpoint) {
-        case bookingURL: {
+        case bookingViewURL: {
             html = mainTitle + " - Tidsbooking";
             break;
         }

@@ -1,6 +1,5 @@
 function renderFooter() {
-
-    document.getElementById("footer_content").innerHTML = `
+    document.getElementById("footer").innerHTML = `
         <section id="footer_left">
             <table id="contact_info_footer">
                 <tr class="footer_row">

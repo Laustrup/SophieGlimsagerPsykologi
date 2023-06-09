@@ -34,7 +34,7 @@ main div {
     margin: auto;
 }
 
-#footer_content {
+footer {
     display: flex;
     justify-content: space-between;
     width: 100%;
@@ -46,4 +46,8 @@ img {
     border-radius: 15px;
 
     object-fit: cover;
+}
+
+.two_digit_input {
+    width: 3em;
 }

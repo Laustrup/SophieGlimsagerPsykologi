@@ -1,47 +1,60 @@
-render();
+let headerAndFooterRendered = false;
 
-function render() {
+render().then();
+
+async function render() {
     renderHead();
-    renderHeader();
-    renderFooter();
+    if (headerAndFooterRendered === false) {
+        renderHeader();
+        renderFooter();
+        headerAndFooterRendered = true;
+    }
 
     const endpoint = window.location.href;
-    console.log("Current endpoint",endpoint);
+    console.log("Current endpoint", endpoint);
 
     switch (endpoint) {
         case welcomeURL: {
             renderFrontpage();
             console.log("Frontpage rendered!");
             break;
-        } case aboutURL: {
+        }
+        case aboutURL: {
             renderAbout();
             console.log("About rendered!");
             break;
-        } case paymentsURL: {
+        }
+        case paymentsURL: {
             renderPayment();
             console.log("Payment rendered!");
             break;
-        } case contactURL: {
+        }
+        case contactURL: {
             renderContact();
             console.log("Contact rendered!");
             break;
-        } case treatmentURL: {
+        }
+        case treatmentURL: {
             renderTreatment();
             console.log("Treatment rendered!");
             break;
-        } case bookingURL: {
-            renderBooking();
+        }
+        case bookingViewURL: {
+            await renderBooking();
             console.log("Booking rendered!");
             break;
-        } case faqURL: {
+        }
+        case faqURL: {
             renderFAQ();
             console.log("FAQ rendered!");
             break;
-        } case adminURL: {
+        }
+        case adminURL: {
             renderAdmin();
             console.log("Admin rendered!");
             break;
-        } default: {
+        }
+        default: {
             renderFrontpage();
             console.log("Frontpage rendered!");
         }

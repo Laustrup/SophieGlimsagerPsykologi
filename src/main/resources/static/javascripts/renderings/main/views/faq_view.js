@@ -8,5 +8,5 @@ function renderFAQ() {
         </section>
     `;
 
-    document.getElementById("main_content").innerHTML = html;
+    document.getElementById("main").innerHTML = html;
 }

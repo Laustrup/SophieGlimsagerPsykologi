@@ -15,28 +15,28 @@ public class BookingController {
 
     private final BookingControllerService _service = new BookingControllerService();
 
-    @PostMapping(value = _endpointDirectory + "upsert", consumes = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(value = _endpointDirectory, consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<BookingDTO> upsert(@RequestBody BookingDTO booking) {
         return _service.upsert(new Booking(booking));
     }
 
-    @GetMapping(value = _endpointDirectory + "get/appointments")
+    @GetMapping(value = _endpointDirectory + "appointments")
     public ResponseEntity<BookingDTO[]> getAppointments() {
         return _service.get(true);
     }
 
-    @GetMapping(value = _endpointDirectory + "get/available")
+    @GetMapping(value = _endpointDirectory + "available")
     public ResponseEntity<BookingDTO[]> getAvailable() {
         return _service.get(false);
     }
 
-    @GetMapping(value = _endpointDirectory + "get")
+    @GetMapping(value = _endpointDirectory)
     public ResponseEntity<BookingDTO[]> get() {
         return _service.get();
     }
 
-    @DeleteMapping(value = _endpointDirectory + "delete", consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<BookingDTO[]> delete(@RequestBody BookingDTO booking) {
+    @DeleteMapping(value = _endpointDirectory, consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Boolean> delete(@RequestBody BookingDTO booking) {
         return _service.delete(new Booking(booking));
     }
 }

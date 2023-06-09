@@ -8,7 +8,7 @@ const welcomeURL = domain + "velkommen",
       paymentsURL = domain + "priser_og_betaling",
       contactURL = domain + "kontakt",
       treatmentURL = domain + "behandlingsområder",
-      bookingURL = domain + "booking/afmeld_tider",
+      bookingViewURL = domain + "booking/afmeld_tider",
       faqURL = domain + "faq",
       adminURL = domain + "admin";
 
@@ -22,12 +22,10 @@ function changeURL(href) {
 }
 
 // API
-const apiURL = domain + "api/"
-      getURL = apiURL + "get/",
-      bookingUpsertURL = apiURL + "upsert",
-      appointmentsURL = getURL + "appointments",
-      availableBookingsURL = getURL + "available",
-      deleteBookingURL = apiURL + "delete",
+const apiURL = domain + "api/",
+      bookingAPIURL = apiURL + "booking/",
+      appointmentsURL = bookingAPIURL + "appointments",
+      availableBookingsURL = bookingAPIURL + "available",
       apiAdminURL = apiURL + "admin/";
 
 function loginQuery(login) {

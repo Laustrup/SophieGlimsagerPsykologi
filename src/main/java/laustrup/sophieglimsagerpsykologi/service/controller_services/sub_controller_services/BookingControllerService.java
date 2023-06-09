@@ -5,6 +5,7 @@ import laustrup.sophieglimsagerpsykologi.models.dtos.BookingDTO;
 import laustrup.sophieglimsagerpsykologi.service.controller_services.ControllerService;
 import laustrup.sophieglimsagerpsykologi.service.entity_services.BookingService;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
 public class BookingControllerService extends ControllerService<BookingDTO> {
@@ -27,7 +28,7 @@ public class BookingControllerService extends ControllerService<BookingDTO> {
         return convert(_service.get());
     }
 
-    public ResponseEntity<BookingDTO[]> delete(Booking booking) {
-        return _service.delete(booking) ? get() : null;
+    public ResponseEntity<Boolean> delete(Booking booking) {
+        return new ResponseEntity<>(_service.delete(booking), HttpStatus.OK);
     }
 }

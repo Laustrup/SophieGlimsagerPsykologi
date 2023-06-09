@@ -20,7 +20,7 @@ function renderHeader() {
                     <div>|</div>
                 </section>
                 <section id="tabs">
-                    <a href="${bookingURL}" onclick="changeURL(bookingURL);" class="${navigationClass}">Book/afmeld tid</a>
+                    <a href="${bookingViewURL}" onclick="changeURL(bookingViewURL);" class="${navigationClass}">Book/afmeld tid</a>
                     <a href="${treatmentURL}" onclick="changeURL(treatmentURL);" class="${navigationClass}">Behandlingsområder</a>
                     <a href="${aboutURL}" onclick="changeURL(aboutURL);" class="${navigationClass}">Om mig</a>
                     <a href="${paymentsURL}" onclick="changeURL(paymentsURL);" class="${navigationClass}">Priser og betaling</a>
@@ -30,5 +30,5 @@ function renderHeader() {
             </section>
         `;
 
-    document.getElementById("header_content").innerHTML = html;
+    document.getElementById("header").innerHTML = html;
 }
