@@ -22,9 +22,37 @@ body{
 }
 
 main{
+    display: grid;
+    gap: 1rem;
     margin: 0 auto;
     padding-top: 50px;
     padding-bottom: 50px;
+    min-height: 80vh;
+}
+
+.chapter {
+    background-color: white;
+    margin: 0 auto;
+    width: 90%;
+    border-style: solid;
+    border-width: 2px;
+    border-color: #545454;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.chapter * {
+    background-color: white;
+}
+
+.container {
+    margin: 0 auto;
+    width: 33%;
+    border-style: solid;
+    border-width: 3px;
+    border-color: #545454;
+    border-radius: 10px;
+    padding: 10px;
 }
 
 main div {
@@ -32,6 +60,22 @@ main div {
     place-items: center center;
     grid-gap: 30px;
     margin: auto;
+}
+
+.input_field {
+    display: flex;
+    gap: 0.75rem;
+}
+
+.date_and_time_fields div {
+    display: flex;
+    gap: 0.75rem;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
 }
 
 footer {

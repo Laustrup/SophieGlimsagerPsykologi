@@ -1,10 +1,14 @@
 async function renderBooking() {
     document.getElementById("main").innerHTML = `
-        <section id="booking_section">
-            ${bookingSection(await fetchAvailableBookings())}
+        <section id="booking_section" class="chapter">
+            <div class="inner_container">
+                ${bookingSection(await fetchAvailableBookings())}
+            </div>
         </section>
-        <section id="cancel_booking_section">
-            ${cancelSection()}
+        <section id="cancel_booking_section" class="chapter">
+            <div class="inner_container">
+                ${await cancelSection()}
+            </div>
         </section>
     `;
 }
@@ -27,12 +31,12 @@ const deleteFormContent = `
             id: "name",
             label: "Navn",
             text: TEXT_INPUT,
-            placeholder: "Lars Larsen",
+            placeholder: "Indtast dit registreret navn her",
             isRequired: true
         })}
         <div class="time_fields">
             <p>Samtalens start</p>
-            <div>
+            <div class="date_and_time_fields">
                 ${inputField({
                     id: "date",
                     label: "Dato",
@@ -40,48 +44,29 @@ const deleteFormContent = `
                     placeholder: "åååå-mm-dd",
                     isRequired: true
                 })}
-                <div>
-                    ${inputField({
-                        id: "hour",
-                        label: "Time",
-                        type: NUMBER_INPUT,
-                        placeholder: "00",
-                        min: 0,
-                        max: 24,
-                        class: ".two_digit_input",
-                        isRequired: true
-                    })}
-                    ${inputField({
-                        id: "minute",
-                        label: "Minut",
-                        type: "number",
-                        placeholder: "00",
-                        min: 0,
-                        max: 59,
-                        class: ".two_digit_input",
-                        isRequired: true
-                    })}
-                    <input type="">
-                </div>
+                ${timepicker({
+                    id: "time",
+                    label: "Tid",
+                    isRequired: true
+                })}
             </div>
         </div>
     </div>
     <div class="form_buttons">
         <button type="submit" onclick="cancelBooking().then()" class="cautious_button">Aflys booking</button>
     </div>
-`;
+`
 
-function cancelSection() {
+async function cancelSection() {
     return `
         <div id="canceling_information">
             <h3>Aflys booking</h3>
             <p>Her kan du aflyse tider, så længe det er dagen før samtalen.</p>
             <p>
-            Husk det er vigtigt, at det er den samme infomation, som der er registreret på samtalen også afhængigt af store og små bogstaver,
-            hvis du er i tvivl om hvad der er registreret, så kan du tjekke den email du har modtaget efter bookingen af samtalen
+                Husk det er vigtigt, at det er den samme infomation, som der er registreret på samtalen også afhængigt af store og små bogstaver,
+                hvis du er i tvivl om hvad der er registreret, så kan du tjekke den email du har modtaget efter bookingen af samtalen
             </p>
         </div>
-        <hr\>
         <form id="delete_booking_form">
             ${deleteFormContent}
         </form>
