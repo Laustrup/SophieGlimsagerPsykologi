@@ -31,7 +31,7 @@ const deleteFormContent = `
             id: "name",
             label: "Navn",
             text: TEXT_INPUT,
-            placeholder: "Indtast dit registreret navn her",
+            placeholder: "F.eks. Søren Jensen",
             isRequired: true
         })}
         <div class="time_fields">
@@ -61,11 +61,7 @@ async function cancelSection() {
     return `
         <div id="canceling_information">
             <h3>Aflys booking</h3>
-            <p>Her kan du aflyse tider, så længe det er dagen før samtalen.</p>
-            <p>
-                Husk det er vigtigt, at det er den samme infomation, som der er registreret på samtalen også afhængigt af store og små bogstaver,
-                hvis du er i tvivl om hvad der er registreret, så kan du tjekke den email du har modtaget efter bookingen af samtalen
-            </p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium nam nobis qui reprehenderit ut? Architecto doloremque earum hic numquam officia optio quod ratione soluta, temporibus totam! At culpa provident repudiandae.</p>
         </div>
         <form id="delete_booking_form">
             ${deleteFormContent}

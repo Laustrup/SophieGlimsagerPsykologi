@@ -61,8 +61,6 @@ main{
 #inner_cancel_booking_container {
     display: flex;
     flex-direction: column;
-    justify-content: left;
-    align-items: start;
 }
 
 main div {
@@ -70,27 +68,6 @@ main div {
     place-items: center center;
     grid-gap: 30px;
     margin: auto;
-}
-
-.input_field {
-    display: flex;
-    gap: 0.75rem;
-}
-
-.date_and_time_fields div {
-    display: flex;
-    gap: 0.75rem;
-}
-
-form {
-    display: flex;
-    flex-direction: column;
-    gap: 3rem;
-}
-
-#cancel_booking_section .inner_container {
-    justify-content: start;
-    align-items: start;
 }
 
 img {
