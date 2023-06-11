@@ -1,0 +1,46 @@
+ul {
+    list-style: none;
+}
+
+li {
+    cursor: pointer;
+    transition: ease-out 0.3s;
+    padding: 0px 20px;
+}
+
+li:hover {
+    color: green;
+}
+
+button{
+    display: inline-block;
+    width: 100px;
+
+    background-color: white;
+
+    border-radius: 15px;
+    border: 4px double #545454;
+
+    color: #545454;
+
+    margin: 5px;
+    padding: 7px;
+
+    text-align: center;
+    font-size: 12px;
+
+    box-shadow: inset 0 0 0 0 white;
+    transition: ease-out 0.3s;
+
+    cursor: pointer;
+}
+
+button:hover {
+    box-shadow: inset 100px 0 0 0 green;
+    color: #eeeeee;
+}
+
+.cautious_button:hover {
+    box-shadow: inset 100px 0 0 0 #CC5500;
+    color: #eeeeee;
+}

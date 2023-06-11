@@ -1,0 +1,18 @@
+:root {
+    --primary-colour: #FFFDD0;
+    --secondary-colour: #F5F5DC;
+    --thirdary-colour: #E9DCC9;
+    --primary-text-colour: #292929;
+    --secondary-text-colour: var(--primary-colour);
+    --container-content-colour: #FFF5EE;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --primary-colour: #455265;
+        --secondary-colour: #5d6879;
+        --thirdary-colour: #2c3645;
+        --primary-text-colour: #292929;
+        --container-content-colour: #FFF5EE;
+    }
+}

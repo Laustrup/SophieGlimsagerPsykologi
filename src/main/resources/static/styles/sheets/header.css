@@ -1,13 +1,22 @@
 header {
-    background-color: #545454;
+    background-color: var(--thirdary-colour);
     padding: 2%;
-
 }
 
 header * {
-    background-color: #545454;
+    background-color: var(--thirdary-colour);
     color: white;
     text-decoration: none;
+}
+
+@media only screen and (max-width: 900px) {
+    header * {
+        align-items: center;
+
+        background-color: var(--thirdary-colour);
+        color: white;
+        text-decoration: none;
+    }
 }
 
 #logo_and_tabs {

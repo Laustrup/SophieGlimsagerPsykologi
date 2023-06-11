@@ -6,11 +6,10 @@ html {
     margin: 0;
     padding: 0;
 
-    justify-content: center;
-    align-items: center;
+    align-items: stretch;
 
-    background-color: #FFF5EE;
-    color: #292929;
+    background-color: var(--primary-colour);
+    color: var(--primary-text-colour);
 
     font-family: 'Fredoka', sans-serif;
     font-weight: 500;
@@ -31,18 +30,18 @@ main{
 }
 
 .chapter {
-    background-color: white;
+    background-color: var(--container-content-colour);
     margin: 0 auto;
     width: 90%;
     border-style: solid;
     border-width: 2px;
-    border-color: #545454;
+    border-color: var(--secondary-colour);
     border-radius: 10px;
     padding: 10px;
 }
 
 .chapter * {
-    background-color: white;
+    background-color: var(--container-content-colour);
 }
 
 .container {
@@ -50,9 +49,20 @@ main{
     width: 33%;
     border-style: solid;
     border-width: 3px;
-    border-color: #545454;
+    border-color: var(--secondary-colour);
     border-radius: 10px;
     padding: 10px;
+}
+
+.inner_container {
+    padding: 10px 7.5% 10px 7.5%;
+}
+
+#inner_cancel_booking_container {
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    align-items: start;
 }
 
 main div {
@@ -78,11 +88,9 @@ form {
     gap: 3rem;
 }
 
-footer {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    margin-top: auto;
+#cancel_booking_section .inner_container {
+    justify-content: start;
+    align-items: start;
 }
 
 img {
@@ -90,8 +98,4 @@ img {
     border-radius: 15px;
 
     object-fit: cover;
-}
-
-.two_digit_input {
-    width: 3em;
 }

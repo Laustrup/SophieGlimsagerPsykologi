@@ -6,7 +6,7 @@ async function renderBooking() {
             </div>
         </section>
         <section id="cancel_booking_section" class="chapter">
-            <div class="inner_container">
+            <div id="inner_cancel_booking_container" class="inner_container">
                 ${await cancelSection()}
             </div>
         </section>
@@ -95,7 +95,7 @@ async function cancelBooking() {
     if (confirm("Hej " + name + ". Du har en tid fra " + from + " til " + to + ". Er du sikker på du ville slette denne?"))
         document.getElementById("delete_booking_form").innerHTML = await requestToDeleteBooking({
             start: start,
-            end: end,
+            end: undefined,
             subject: undefined,
             client: {
                 id: 0,
