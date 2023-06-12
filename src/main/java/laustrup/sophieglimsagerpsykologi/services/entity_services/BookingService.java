@@ -1,9 +1,9 @@
-package laustrup.sophieglimsagerpsykologi.service.entity_services;
+package laustrup.sophieglimsagerpsykologi.services.entity_services;
 
 import laustrup.sophieglimsagerpsykologi.models.Booking;
 import laustrup.sophieglimsagerpsykologi.repositories.DbGate;
 import laustrup.sophieglimsagerpsykologi.repositories.sub_reposities.BookingRepository;
-import laustrup.sophieglimsagerpsykologi.service.entity_services.persistence_services.BookingGather;
+import laustrup.sophieglimsagerpsykologi.services.entity_services.persistence_services.BookingGather;
 import laustrup.utilities.collections.lists.Liszt;
 
 import java.sql.ResultSet;

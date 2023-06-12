@@ -1,9 +1,9 @@
-package laustrup.sophieglimsagerpsykologi.service.controller_services.sub_controller_services;
+package laustrup.sophieglimsagerpsykologi.services.controller_services.sub_controller_services;
 
 import laustrup.sophieglimsagerpsykologi.models.Booking;
 import laustrup.sophieglimsagerpsykologi.models.dtos.BookingDTO;
-import laustrup.sophieglimsagerpsykologi.service.controller_services.ControllerService;
-import laustrup.sophieglimsagerpsykologi.service.entity_services.BookingService;
+import laustrup.sophieglimsagerpsykologi.services.controller_services.ControllerService;
+import laustrup.sophieglimsagerpsykologi.services.entity_services.BookingService;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

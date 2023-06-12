@@ -1,4 +1,4 @@
-package laustrup.sophieglimsagerpsykologi.service.entity_services.persistence_services;
+package laustrup.sophieglimsagerpsykologi.services.entity_services.persistence_services;
 
 import laustrup.sophieglimsagerpsykologi.models.Booking;
 import laustrup.sophieglimsagerpsykologi.models.Client;

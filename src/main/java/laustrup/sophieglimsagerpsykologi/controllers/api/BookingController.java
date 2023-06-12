@@ -2,7 +2,7 @@ package laustrup.sophieglimsagerpsykologi.controllers.api;
 
 import laustrup.sophieglimsagerpsykologi.models.Booking;
 import laustrup.sophieglimsagerpsykologi.models.dtos.BookingDTO;
-import laustrup.sophieglimsagerpsykologi.service.controller_services.sub_controller_services.BookingControllerService;
+import laustrup.sophieglimsagerpsykologi.services.controller_services.sub_controller_services.BookingControllerService;
 
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;

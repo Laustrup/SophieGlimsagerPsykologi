@@ -1,10 +1,10 @@
-package laustrup.sophieglimsagerpsykologi.service.entity_services;
+package laustrup.sophieglimsagerpsykologi.services.entity_services;
 
 import laustrup.sophieglimsagerpsykologi.models.Admin;
 import laustrup.sophieglimsagerpsykologi.repositories.DbGate;
 import laustrup.sophieglimsagerpsykologi.repositories.sub_reposities.AdminRepository;
 import laustrup.sophieglimsagerpsykologi.repositories.sub_reposities.BookingRepository;
-import laustrup.sophieglimsagerpsykologi.service.entity_services.persistence_services.BookingGather;
+import laustrup.sophieglimsagerpsykologi.services.entity_services.persistence_services.BookingGather;
 
 public class AdminService {
 

@@ -1,7 +1,7 @@
 package laustrup.sophieglimsagerpsykologi.controllers.api;
 
 import laustrup.sophieglimsagerpsykologi.models.dtos.AdminDTO;
-import laustrup.sophieglimsagerpsykologi.service.controller_services.sub_controller_services.AdminControllerService;
+import laustrup.sophieglimsagerpsykologi.services.controller_services.sub_controller_services.AdminControllerService;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;

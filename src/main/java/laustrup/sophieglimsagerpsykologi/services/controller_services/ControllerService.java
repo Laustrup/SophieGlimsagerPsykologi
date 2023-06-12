@@ -1,4 +1,4 @@
-package laustrup.sophieglimsagerpsykologi.service.controller_services;
+package laustrup.sophieglimsagerpsykologi.services.controller_services;
 
 import laustrup.sophieglimsagerpsykologi.models.Booking;
 import laustrup.sophieglimsagerpsykologi.models.dtos.BookingDTO;

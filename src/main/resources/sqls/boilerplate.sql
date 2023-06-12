@@ -43,3 +43,11 @@ CREATE TABLE admin(
     `telephone` INT(8),
     `address` VARCHAR(40)
 );
+
+CREATE TABLE mobile_pay(
+    `reference` VARCHAR(36) NOT NULL,
+    `amount` DOUBLE NOT NULL,
+    `paymentId` VARCHAR(36) NOT NULL,
+
+    PRIMARY KEY(`reference`)
+);
