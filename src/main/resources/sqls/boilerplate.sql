@@ -45,7 +45,7 @@ CREATE TABLE admin(
 );
 
 CREATE TABLE mobile_pay(
-    `reference` VARCHAR(36) NOT NULL,
+    `reference` VARCHAR(30) NOT NULL,
     `amount` DOUBLE NOT NULL,
     `paymentId` VARCHAR(36) NOT NULL,
 

@@ -1,4 +1,4 @@
-package laustrup.sophieglimsagerpsykologi.models.dtos.mobilepay;
+package laustrup.sophieglimsagerpsykologi.models.dtos.mobilepay.payments;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 
