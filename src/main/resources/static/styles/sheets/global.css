@@ -30,18 +30,18 @@ main{
 }
 
 .chapter {
-    background-color: var(--container-content-colour);
+    background-color: var(--primary-colour);
     margin: 0 auto;
-    width: 90%;
+    width: 100%;
     border-style: solid;
     border-width: 2px;
-    border-color: var(--secondary-colour);
+    border-color: var(--primary-colour);
     border-radius: 10px;
     padding: 10px;
 }
 
 .chapter * {
-    background-color: var(--container-content-colour);
+    background-color: var(--primary-colour);
 }
 
 .container {

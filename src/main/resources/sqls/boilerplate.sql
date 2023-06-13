@@ -4,6 +4,7 @@ USE `sophie_glimsager_psykologi_db`;
 DROP TABLE IF EXISTS bookings;
 DROP TABLE IF EXISTS clients;
 DROP TABLE IF EXISTS admin;
+DROP TABLE IF EXISTS mobile_pay;
 
 CREATE TABLE clients(
     `id` BIGINT(9) NOT NULL AUTO_INCREMENT,
@@ -51,4 +52,13 @@ CREATE TABLE mobile_pay(
     `paymentId` VARCHAR(36) NOT NULL,
 
     PRIMARY KEY(`reference`)
+);
+
+INSERT INTO bookings(`start`, `end`, `timestamp`) VALUES (NOW(),NOW(),NOW());
+
+INSERT INTO clients(`name`, `email`, `phone`, `birthdate`, `consultation`) VALUES (
+    'Jens Rasmussen', 'jens@gmail.com', 42561472, '1995-06-16','ONLINE'
+);
+INSERT INTO bookings(`client_id`, `start`, `end`, `subject`, `title`, `description`, `timestamp`) VALUES (
+    1,'2023-06-16T12:00:00','2023-06-16T13:00:00','STRESS','For meget stress','Det giver mig hovedpine at arbejde for meget', NOW()
 );

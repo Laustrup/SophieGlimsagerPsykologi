@@ -1,5 +1,5 @@
 let booking = getBooking();
-let bookingStep = localStorage.getItem("booking_step") === null ? "1" : localStorage.getItem("booking_step");
+let bookingStep = localStorage.getItem("booking_step") === null ? "Detaljer om booking" : localStorage.getItem("booking_step");
 let siteState = "booking";
 const stepTitles = ["Detaljer om booking", "Udfyld skema", "Godkend, book og betal"];
 
@@ -23,18 +23,25 @@ async function renderBooking() {
 }
 
 async function bookingSection(bookings) {
+    const includeCalendar = siteState === "booking" && bookingStep === stepTitles[0];
+
+    function calendarDivider() {
+        return includeCalendar ? `<div id="calendar_frame"></div>` : ``;
+    }
+
     document.getElementById("inner_booking_section").innerHTML = siteState === "booking" ? `
         <div id="booking_info">
-            ${bookingInfo()}
+            ${steps}
         </div>
-        <div id="calendar_frame">
-            ${renderCalendar(bookings)}
-        </div>
+        ${calendarDivider()}
     ` : `
         ${await cancelSection()}
     `;
 
+    if (includeCalendar)
+        renderCalendar(bookings)
 }
+
 function displayLength(inMinutes) {
     return inMinutes < 60 ? inMinutes.toString() + " minutter"
         : (Math.floor(inMinutes/60).toString() + " timer " +
@@ -114,40 +121,6 @@ function storeReservation() {
             consultation: document.getElementById("booking_consultation").value
         }
     });
-}
-
-function chosenBookingDetails() {
-    return steps + (booking !== null ? `
-        <div class="booking_fields">
-            <label for="session_length">Lægnde:</label>
-            <p id="session_length">${displayLength(booking.length)}</p>
-            <label for="start_detail">Starttid:</label>
-            <p id="start_detail">${() => {
-                return booking.start.toLocaleString("da-DK", {
-                    weekday: "long",
-                    year: "numeric",
-                    month: "long",
-                    day: "numeric",
-                    hour: "numeric",
-                    minute: "numeric"
-                });
-            }}</p>
-            <label for="end_detail">Sluttid:</label>
-            <p id="end_detail">${() => {
-                return booking.end.toLocaleString("da-DK", {
-                    weekday: "long",
-                    year: "numeric",
-                    month: "long",
-                    day: "numeric",
-                    hour: "numeric",
-                    minute: "numeric"
-                });
-            }}</p>
-        </div>
-        ${bookingNavigationButtons()}
-    ` : `
-        <h3>Vælg en tid på kalenderen og få den vist her</h3>
-    `);
 }
 
 const clientDescription = `
@@ -251,11 +224,10 @@ function jumpBookingStep(step) {
 }
 
 function bookingInfo() {
-    console.log("booking step",bookingStep)
     switch (bookingStep) {
-        case "1": return chosenBookingDetails();
-        case "2": return clientDescription;
-        case "3": return reviewBookingAndPay;
+        case stepTitles[0]: return chosenBookingDetails();
+        case stepTitles[1]: return clientDescription;
+        case stepTitles[2]: return reviewBookingAndPay;
     }
 }
 
