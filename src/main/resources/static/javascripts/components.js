@@ -1,4 +1,10 @@
-const TEXT_INPUT = "text", NUMBER_INPUT = "number", DATE_INPUT = "date", TIME_INPUT = "time", DATE_TIME_INPUT = "datetime-local";
+const TEXT_INPUT = "text",
+      NUMBER_INPUT = "number",
+      DATE_INPUT = "date",
+      TIME_INPUT = "time",
+      DATE_TIME_INPUT = "datetime-local",
+      EMAIL_INPUT = "email",
+      PHONE_INPUT = "tel";
 
 function include(element) {
     if (element.doInclude !== undefined)

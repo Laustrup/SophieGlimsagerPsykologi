@@ -9,6 +9,7 @@ CREATE TABLE clients(
     `id` BIGINT(9) NOT NULL AUTO_INCREMENT,
     `name` VARCHAR(35) NOT NULL,
     `email` VARCHAR(35) NOT NULL,
+    `phone` VARCHAR(8) NOT NULL,
     `birthdate` DATE NOT NULL,
     `consultation` ENUM(
         'ONLINE',

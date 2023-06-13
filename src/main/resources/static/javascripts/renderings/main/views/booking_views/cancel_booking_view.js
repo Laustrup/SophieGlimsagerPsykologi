@@ -1,58 +1,31 @@
-async function renderBooking() {
-    document.getElementById("main").innerHTML = `
-        <section id="booking_section" class="chapter">
-            <div class="inner_container">
-                ${bookingSection(await fetchAvailableBookings())}
-            </div>
-        </section>
-        <section id="cancel_booking_section" class="chapter">
-            <div id="inner_cancel_booking_container" class="inner_container">
-                ${await cancelSection()}
-            </div>
-        </section>
-    `;
-}
-
-function bookingSection(bookings) {
-    let html = `
-        
-    `;
-
-    return html;
-}
-
-function renderCalendar(bookings) {
-
-}
-
 const deleteFormContent = `
     <div class="input_fields">
         ${inputField({
-            id: "name",
-            label: "Navn",
-            text: TEXT_INPUT,
-            placeholder: "F.eks. Søren Jensen",
-            isRequired: true
-        })}
+    id: "name",
+    label: "Navn",
+    text: TEXT_INPUT,
+    placeholder: "F.eks. Søren Jensen",
+    isRequired: true
+})}
         <div class="time_fields">
             <p>Samtalens start</p>
             <div class="date_and_time_fields">
                 ${inputField({
-                    id: "date",
-                    label: "Dato",
-                    type: DATE_INPUT,
-                    placeholder: "åååå-mm-dd",
-                    isRequired: true
-                })}
+    id: "date",
+    label: "Dato",
+    type: DATE_INPUT,
+    placeholder: "åååå-mm-dd",
+    isRequired: true
+})}
                 ${timepicker({
-                    id: "time",
-                    label: "Tid",
-                    isRequired: true
-                })}
+    id: "time",
+    label: "Tid",
+    isRequired: true
+})}
             </div>
         </div>
     </div>
-    <div class="form_buttons">
+    <div class="buttons">
         <button type="submit" onclick="cancelBooking().then()" class="cautious_button">Aflys booking</button>
     </div>
 `
@@ -60,8 +33,8 @@ const deleteFormContent = `
 async function cancelSection() {
     return `
         <div id="canceling_information">
-            <h3>Aflys booking</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium nam nobis qui reprehenderit ut? Architecto doloremque earum hic numquam officia optio quod ratione soluta, temporibus totam! At culpa provident repudiandae.</p>
+            <h2 class="chapter_title">Aflys booking</h2>
+            <p class="chapter_info">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium nam nobis qui reprehenderit ut? Architecto doloremque earum hic numquam officia optio quod ratione soluta, temporibus totam! At culpa provident repudiandae.</p>
         </div>
         <form id="delete_booking_form">
             ${deleteFormContent}
