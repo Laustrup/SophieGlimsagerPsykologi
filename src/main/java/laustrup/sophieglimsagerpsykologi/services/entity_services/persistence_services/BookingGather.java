@@ -7,6 +7,7 @@ import laustrup.utilities.console.Printer;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.function.Supplier;
 
 public class BookingGather {
 
@@ -37,7 +38,13 @@ public class BookingGather {
             return new Booking(
                 set.getTimestamp("start").toLocalDateTime(),
                 set.getTimestamp("end").toLocalDateTime(),
-                Booking.Subject.valueOf(set.getString("subject")),
+                (Booking.Subject) ifNotNull(set.getString("subject"), () -> {
+                    try {
+                        return Booking.Subject.valueOf(set.getString("subject"));
+                    } catch (SQLException e) {
+                        throw new RuntimeException(e);
+                    }
+                }),
                 client(set),
                 set.getString("title"),
                 set.getString("description"),
@@ -67,4 +74,12 @@ public class BookingGather {
             Client.Consultation.valueOf(set.getString("consultation"))
         );
     }
+    private Object ifNotNull(Object input, Supplier<Object> supplier) {
+        try {
+            return input != null ? supplier.get() : null;
+        } catch (Exception e) {
+            return null;
+        }
+    }
 }
+

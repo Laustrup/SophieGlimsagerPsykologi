@@ -1,9 +1,16 @@
 #calendar_frame {
+    background-color: var(--secondary-colour);
     width: 100%;
     display: grid;
+    border: 2px outset var(--primary-colour);
+    border-radius: 10px;
     gap: 0;
     grid-template-columns: 20% repeat(7,10%);
     grid-template-rows: 100px repeat(14,80px);
+}
+
+#calendar_frame *:not(.available) {
+    background-color: var(--secondary-colour);
 }
 
 .calendar_field {
@@ -14,9 +21,24 @@
 }
 
 @media only screen and (max-width: 1000px) {
-    .calendar_field {
-        width : 100px;
-    }
+
+}
+
+.booked, .available {
+    width: 100%;
+    height: 100%;
+}
+
+.booked:hover, .available:hover{
+    cursor: pointer;
+}
+
+.available {
+    background-color: #009938;
+}
+
+.booked {
+    background: darkred;
 }
 
 .hour_row {

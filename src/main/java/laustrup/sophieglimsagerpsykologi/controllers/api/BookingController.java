@@ -4,6 +4,7 @@ import laustrup.sophieglimsagerpsykologi.models.Booking;
 import laustrup.sophieglimsagerpsykologi.models.dtos.BookingDTO;
 import laustrup.sophieglimsagerpsykologi.services.controller_services.sub_controller_services.BookingControllerService;
 
+import laustrup.utilities.console.Printer;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -26,9 +27,7 @@ public class BookingController {
     }
 
     @GetMapping(value = _endpointDirectory + "available")
-    public ResponseEntity<BookingDTO[]> getAvailable() {
-        return _service.get(false);
-    }
+    public ResponseEntity<BookingDTO[]> getAvailable() { return _service.get(false); }
 
     @GetMapping(value = _endpointDirectory)
     public ResponseEntity<BookingDTO[]> get() {

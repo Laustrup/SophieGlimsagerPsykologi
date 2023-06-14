@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
 public class BookingDTO {
 
     @Getter
-    private boolean booked;
+    private boolean isBooked;
 
     @Getter
     private LocalDateTime start, end, timestamp;
@@ -40,7 +40,7 @@ public class BookingDTO {
             booking != null ? booking.get_description() : null,
             booking != null ? booking.get_timestamp() : null
         );
-        booked = booking.is_booked();
+        isBooked = booking.is_booked();
         length = booking.get_length();
     }
 

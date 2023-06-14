@@ -54,7 +54,7 @@ CREATE TABLE mobile_pay(
     PRIMARY KEY(`reference`)
 );
 
-INSERT INTO bookings(`start`, `end`, `timestamp`) VALUES (NOW(),NOW(),NOW());
+INSERT INTO bookings(`start`, `end`, `timestamp`) VALUES (TIMESTAMPADD(HOUR, 2, NOW()),TIMESTAMPADD(HOUR, 3, NOW()),NOW());
 
 INSERT INTO clients(`name`, `email`, `phone`, `birthdate`, `consultation`) VALUES (
     'Jens Rasmussen', 'jens@gmail.com', 42561472, '1995-06-16','ONLINE'
