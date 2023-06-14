@@ -1,10 +1,12 @@
 let booking = getBooking();
-let bookingStep = localStorage.getItem("booking_step") === null ? "Detaljer om booking" : localStorage.getItem("booking_step");
-let siteState = "booking";
 const stepTitles = ["Detaljer om booking", "Udfyld skema", "Godkend, book og betal"];
+let bookingStep = localStorage.getItem("booking_step") === null ? stepTitles[0] : localStorage.getItem("booking_step");
+let siteState = "booking";
 
 async function renderBooking() {
     document.getElementById("main").innerHTML = `
+        <h1 id="booking_title" class="title">${siteState === "booking" ? "Book tid" : "Afmeld tid"}</h1>
+        <hr />
         <section id="booking_section" class="chapter">
             <div id="inner_booking_section" class="inner_container"></div>
         </section>
@@ -25,15 +27,11 @@ async function renderBooking() {
 async function bookingSection(bookings) {
     const includeCalendar = siteState === "booking" && bookingStep === stepTitles[0];
 
-    function calendarDivider() {
-        return includeCalendar ? `<div id="calendar_frame"></div>` : ``;
-    }
-
     document.getElementById("inner_booking_section").innerHTML = siteState === "booking" ? `
         <div id="booking_info">
             ${steps}
         </div>
-        ${calendarDivider()}
+        ${includeCalendar ? `<div id="calendar_frame"></div>` : ``}
     ` : `
         ${await cancelSection()}
     `;
@@ -53,7 +51,7 @@ const steps = `
         <h3>Trin</h3>
         <div id="booking_steps" class="details">
             <div class="label_with_input">
-                <input type="radio" id="step_1" name="booking_step" value="${() => { return bookingStep === "1"; }}" onclick="${() => {jumpBookingStep(1)}}">
+                <input type="radio" id="step_1" name="booking_step" ${localStorage.getItem("booking_step") === null ? "checked" : ""} onclick="${() => {jumpBookingStep(1)}}" >
                 <label for="step_1" class="booking_step_label">${stepTitles[0]}</label>
             </div>
             <div class="label_with_input">

@@ -2,6 +2,7 @@ package laustrup.sophieglimsagerpsykologi.services.entity_services.persistence_s
 
 import laustrup.sophieglimsagerpsykologi.models.Booking;
 import laustrup.sophieglimsagerpsykologi.models.Client;
+import laustrup.sophieglimsagerpsykologi.models.FAQ;
 import laustrup.utilities.collections.lists.Liszt;
 import laustrup.utilities.console.Printer;
 
@@ -74,6 +75,7 @@ public class BookingGather {
             Client.Consultation.valueOf(set.getString("consultation"))
         );
     }
+
     private Object ifNotNull(Object input, Supplier<Object> supplier) {
         try {
             return input != null ? supplier.get() : null;

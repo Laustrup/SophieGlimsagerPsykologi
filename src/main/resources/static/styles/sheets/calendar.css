@@ -9,15 +9,16 @@
     grid-template-rows: 100px repeat(14,80px);
 }
 
-#calendar_frame *:not(.available) {
+#calendar_frame *:not(.available):not(.calendar_field) {
     background-color: var(--secondary-colour);
 }
 
 .calendar_field {
+    background-color: white;
     width: 100%;
     height: 100%;
     margin: auto;
-    border: 1px solid white;
+    border: 1px solid var(--primary-colour);
 }
 
 @media only screen and (max-width: 1000px) {

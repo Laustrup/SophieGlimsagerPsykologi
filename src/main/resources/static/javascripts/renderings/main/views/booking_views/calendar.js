@@ -36,14 +36,7 @@ function renderCalendar(bookings) {
                 ? `
                     <div class="calendar_field">
                         <div class="${booking.isBooked ? "booked" : "available"}" onclick="${() => storeBooking(booking)}">
-                            ${(booking.start).toLocaleString("da-DK",{
-                                hour: "numeric"})}:${(booking.start).toLocaleString("da-DK",{
-                                minute: "numeric"
-                            }).padStart(2,'0')} - 
-                            ${(booking.end).toLocaleString("da-DK",{
-                                hour: "numeric"})}:${(booking.end).toLocaleString("da-DK",{
-                                minute: "numeric"
-                            }).padStart(2,'0')}
+                            Ledig
                         </div>
                     </div>
                 `

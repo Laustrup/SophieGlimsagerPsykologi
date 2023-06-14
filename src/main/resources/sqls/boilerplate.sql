@@ -5,6 +5,7 @@ DROP TABLE IF EXISTS bookings;
 DROP TABLE IF EXISTS clients;
 DROP TABLE IF EXISTS admin;
 DROP TABLE IF EXISTS mobile_pay;
+DROP TABLE IF EXISTS faq;
 
 CREATE TABLE clients(
     `id` BIGINT(9) NOT NULL AUTO_INCREMENT,
@@ -52,6 +53,13 @@ CREATE TABLE mobile_pay(
     `paymentId` VARCHAR(36) NOT NULL,
 
     PRIMARY KEY(`reference`)
+);
+
+CREATE TABLE faq(
+    `question` VARCHAR(150) NOT NULL,
+    `answer` VARCHAR(250) NOT NULL,
+
+    PRIMARY KEY(`question`,`answer`)
 );
 
 INSERT INTO bookings(`start`, `end`, `timestamp`) VALUES (TIMESTAMPADD(HOUR, 2, NOW()),TIMESTAMPADD(HOUR, 3, NOW()),NOW());

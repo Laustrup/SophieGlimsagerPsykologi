@@ -35,7 +35,7 @@ input, select {
     transition: width 0.4s ease-in-out;
 }
 
-input:focus, select:focus {
+input:focus:not([type="radio"]), select:focus {
     width: 105%;
     border: none;
     outline: gray outset medium;
@@ -115,4 +115,27 @@ input:checked + .slider:before {
 }
 input:checked + .slider:after {
     content:'Aflys';
+}
+
+#booking_steps {
+    padding-bottom: 100px;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 0;
+}
+#booking_steps_section {
+    display: grid;
+    grid-template-columns: 100px 1fr;
+}
+
+#booking_steps_section h3 {
+    padding-top: 10px;
+}
+
+input[type="radio"] {
+    width: 15px;
+}
+input[type="radio"]:checked {
+    width: 30px;
+    accent-color: green;
 }

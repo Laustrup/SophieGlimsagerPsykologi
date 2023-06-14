@@ -15,6 +15,15 @@ html {
     font-weight: 500;
 }
 
+.title {
+    padding-left: 10%;
+}
+
+hr {
+    margin-left: 9%;
+    margin-right: 7%;
+}
+
 body{
     width: 100%;
     min-height: 100vh;
