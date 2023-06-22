@@ -18,7 +18,7 @@ function bookingQuery(params) {
 
 function changeURL(href) {
     window.location.href = href;
-    render();
+    render().then();
 }
 
 // API
@@ -26,7 +26,8 @@ const apiURL = domain + "api/",
       bookingAPIURL = apiURL + "booking/",
       appointmentsURL = bookingAPIURL + "appointments",
       availableBookingsURL = bookingAPIURL + "available",
-      apiAdminURL = apiURL + "admin/";
+      apiAdminURL = apiURL + "admin/",
+      FAQURL = apiAdminURL + "faq";
 
 function loginQuery(login) {
     return apiAdminURL + "login/" + login;

@@ -59,9 +59,10 @@ CREATE TABLE faq(
     `question` VARCHAR(150) NOT NULL,
     `answer` VARCHAR(250) NOT NULL,
 
-    PRIMARY KEY(`question`,`answer`)
+    PRIMARY KEY(`question`)
 );
 
+-- VALUES
 INSERT INTO bookings(`start`, `end`, `timestamp`) VALUES (TIMESTAMPADD(HOUR, 2, NOW()),TIMESTAMPADD(HOUR, 3, NOW()),NOW());
 
 INSERT INTO clients(`name`, `email`, `phone`, `birthdate`, `consultation`) VALUES (
@@ -70,3 +71,5 @@ INSERT INTO clients(`name`, `email`, `phone`, `birthdate`, `consultation`) VALUE
 INSERT INTO bookings(`client_id`, `start`, `end`, `subject`, `title`, `description`, `timestamp`) VALUES (
     1,'2023-06-16T12:00:00','2023-06-16T13:00:00','STRESS','For meget stress','Det giver mig hovedpine at arbejde for meget', NOW()
 );
+
+INSERT INTO faq(`question`,`answer`) VALUES ('Hvordan betaler man for en session?','Gennem mobilepay');

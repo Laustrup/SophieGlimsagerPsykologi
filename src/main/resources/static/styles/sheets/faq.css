@@ -1,0 +1,21 @@
+#question_and_answers {
+    padding-top: 25px;
+    display: inline-block;
+    padding-left: 10%;
+}
+
+.question_and_answer {
+    display: inline-block;
+    width: 100%;
+    padding-top: 25px;
+}
+
+.question {
+    cursor: pointer;
+}
+
+.answer {
+    padding-top: 10px;
+    border-top: 1px solid white;
+    color: #DCDCDC;
+}

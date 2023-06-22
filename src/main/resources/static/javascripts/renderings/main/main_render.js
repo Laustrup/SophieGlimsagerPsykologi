@@ -45,7 +45,7 @@ async function render() {
             break;
         }
         case faqURL: {
-            renderFAQ();
+            await renderFAQ();
             console.log("FAQ rendered!");
             break;
         }
