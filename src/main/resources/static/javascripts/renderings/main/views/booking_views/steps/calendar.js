@@ -1,6 +1,7 @@
 let week = [];
 
-function renderCalendar(bookings) {
+async function renderCalendar() {
+    const bookings = await fetchAvailableBookings();
     const now = new Date();
     const weekOfMonth = (0 | now.getDate() / 7)+1;
 
@@ -35,7 +36,13 @@ function renderCalendar(bookings) {
             html += booking !== undefined && booking.start.getDate() === week[j-1].getDate()
                 ? `
                     <div class="calendar_field">
-                        <div class="${booking.isBooked ? "booked" : "available"}" onclick="${() => storeBooking(booking)}">
+                        <div id="${booking.start}" class="${booking.isBooked ? "booked" : "available"}" onclick="pickAvailableBooking({
+                            start: '${booking.start}',
+                            end: '${booking.end}',
+                            timestamp: '${booking.timestamp}',
+                            length: '${booking.length}',
+                            isBooked: ${booking.isBooked} === undefined ? undefined : '${booking.isBooked}'
+                        }).then();">
                             Ledig
                         </div>
                     </div>
@@ -44,7 +51,13 @@ function renderCalendar(bookings) {
         }
     }
 
-    document.getElementById("calendar_frame").innerHTML = html;
+    document.getElementById("booking_frame").innerHTML = html;
+}
+
+async function pickAvailableBooking(available) {
+    storeBooking(available);
+    booking = getBooking();
+    await nextBookingStep();
 }
 
 function displayWeek(date) {

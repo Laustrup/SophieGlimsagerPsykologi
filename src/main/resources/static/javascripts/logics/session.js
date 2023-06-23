@@ -32,12 +32,16 @@ function getClient() {
 function storeBooking(booking) {
     localStorage.setItem(startKey, booking.start);
     localStorage.setItem(endKey, booking.end);
-    localStorage.setItem(subjectKey, booking.subject);
-    localStorage.setItem(titleKey, booking.title);
-    localStorage.setItem(descriptionKey, booking.description);
+    if (booking.subject !== undefined)
+        localStorage.setItem(subjectKey, booking.subject);
+    if (booking.title !== undefined)
+        localStorage.setItem(titleKey, booking.title);
+    if (booking.description !== undefined)
+        localStorage.setItem(descriptionKey, booking.description);
     localStorage.setItem(timestampKey, booking.timestamp);
     localStorage.setItem(lengthKey, booking.length);
-    localStorage.setItem(isBookedKey, booking.isBooked);
+    if (booking.isBooked !== undefined)
+        localStorage.setItem(isBookedKey, booking.isBooked);
     if (booking.client !== undefined)
         storeToClient();
 

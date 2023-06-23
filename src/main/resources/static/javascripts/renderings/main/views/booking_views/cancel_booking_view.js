@@ -32,10 +32,6 @@ const deleteFormContent = `
 
 async function cancelSection() {
     return `
-        <div id="canceling_information">
-            <h2 class="chapter_title">Aflys booking</h2>
-            <p class="chapter_info">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium nam nobis qui reprehenderit ut? Architecto doloremque earum hic numquam officia optio quod ratione soluta, temporibus totam! At culpa provident repudiandae.</p>
-        </div>
         <form id="delete_booking_form">
             ${deleteFormContent}
         </form>
