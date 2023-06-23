@@ -15,13 +15,8 @@ html {
     font-weight: 500;
 }
 
-.title {
-    padding-left: 10%;
-}
-
 hr {
-    margin-left: 9%;
-    margin-right: 9%;
+    margin: 10px 9% 20px;
 }
 
 body{
@@ -51,6 +46,19 @@ main{
 
 .chapter * {
     background-color: var(--primary-colour);
+}
+
+.chapter_caption {
+    padding: 10px 7.5% 10px 7.5%;
+    margin-left: 5%;
+    margin-right: 5%;
+    display: grid;
+    gap: 1.5rem;
+}
+
+.chapter_caption .title {
+    display: inline-block;
+    margin: 0 auto;
 }
 
 .container {

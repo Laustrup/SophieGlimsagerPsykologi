@@ -5,7 +5,10 @@ let siteState = "booking";
 
 async function renderBooking() {
     document.getElementById("main").innerHTML = `
-        <h1 id="booking_title" class="title">${siteState === "booking" ? "Book tid" : "Afmeld tid"}</h1>
+        <section class="chapter_caption">
+            <h1 id="booking_title" class="title">${siteState === "booking" ? "Book tid" : "Afmeld tid"}</h1> 
+            <p class="title_description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi culpa dignissimos, dolores libero molestiae natus omnis perspiciatis quod reiciendis. Autem blanditiis corporis earum impedit magni perferendis quo veniam voluptatum. Dicta!</p>
+        </section>
         <hr />
         <section id="booking_section" class="chapter">
             <div id="inner_booking_section" class="inner_container"></div>

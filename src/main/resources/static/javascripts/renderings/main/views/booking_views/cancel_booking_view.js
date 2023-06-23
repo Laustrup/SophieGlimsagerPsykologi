@@ -1,27 +1,27 @@
 const deleteFormContent = `
     <div class="input_fields">
         ${inputField({
-    id: "name",
-    label: "Navn",
-    text: TEXT_INPUT,
-    placeholder: "F.eks. Søren Jensen",
-    isRequired: true
-})}
+            id: "name",
+            label: "Navn",
+            text: TEXT_INPUT,
+            placeholder: "F.eks. Søren Jensen",
+            isRequired: true
+        })}
         <div class="time_fields">
             <p>Samtalens start</p>
             <div class="date_and_time_fields">
                 ${inputField({
-    id: "date",
-    label: "Dato",
-    type: DATE_INPUT,
-    placeholder: "åååå-mm-dd",
-    isRequired: true
-})}
+                    id: "date",
+                    label: "Dato",
+                    type: DATE_INPUT,
+                    placeholder: "åååå-mm-dd",
+                    isRequired: true
+                })}
                 ${timepicker({
-    id: "time",
-    label: "Tid",
-    isRequired: true
-})}
+                    id: "time",
+                    label: "Tid",
+                    isRequired: true
+                })}
             </div>
         </div>
     </div>
