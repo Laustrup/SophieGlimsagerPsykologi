@@ -5,14 +5,15 @@ const startKey = "start", endKey = "end", subjectKey = "subject", titleKey = "ti
 
 function getBooking() {
     return sessionStorage.getItem("has_stored_booking") === "true" ? {
-        start: sessionStorage.getItem(startKey),
-        end: sessionStorage.getItem(endKey),
+        start: new Date(sessionStorage.getItem(startKey)),
+        end: new Date(sessionStorage.getItem(endKey)),
         subject: sessionStorage.getItem(subjectKey),
         title: sessionStorage.getItem(titleKey),
         description: sessionStorage.getItem(descriptionKey),
         length: sessionStorage.getItem(lengthKey),
         timestamp: sessionStorage.getItem(timestampKey),
         isBooked: sessionStorage.getItem(isBookedKey),
+        consultation: sessionStorage.getItem(consultationKey),
         client: getClient()
     } : null;
 }
@@ -23,8 +24,7 @@ function getClient() {
         name: sessionStorage.getItem(clientNameKey),
         email: sessionStorage.getItem(clientEmailKey),
         phone: sessionStorage.getItem(clientPhoneKey),
-        birthdate: sessionStorage.getItem(clientBirthdateKey),
-        consultation: sessionStorage.getItem(consultationKey),
+        birthdate: new Date(sessionStorage.getItem(clientBirthdateKey)),
         age: sessionStorage.getItem(clientAgeKey)
     } : null;
 }
@@ -40,10 +40,12 @@ function storeBooking(booking) {
         sessionStorage.setItem(descriptionKey, booking.description);
     sessionStorage.setItem(timestampKey, booking.timestamp);
     sessionStorage.setItem(lengthKey, booking.length);
+    if (booking.consultation !== undefined)
+        sessionStorage.setItem(consultationKey, booking.consultation);
     if (booking.isBooked !== undefined)
         sessionStorage.setItem(isBookedKey, booking.isBooked);
     if (booking.client !== undefined)
-        storeToClient();
+        storeToClient(booking.client);
 
     sessionStorage.setItem("has_stored_booking", "true");
 }
@@ -54,7 +56,6 @@ function storeToClient(client) {
     sessionStorage.setItem(clientEmailKey, client.email);
     sessionStorage.setItem(clientPhoneKey, client.phone);
     sessionStorage.setItem(clientBirthdateKey, client.birthdate);
-    sessionStorage.setItem(consultationKey, client.consultation);
     sessionStorage.setItem(clientAgeKey, client.age);
     sessionStorage.setItem("has_stored_client", "true");
 }

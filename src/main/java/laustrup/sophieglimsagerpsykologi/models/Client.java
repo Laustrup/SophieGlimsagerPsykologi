@@ -22,6 +22,7 @@ public class Client {
     @Getter
     private int _age, _phone;
 
+    //TODO Consultation must be moved to booking
     @Getter
     private Consultation _consultation;
 

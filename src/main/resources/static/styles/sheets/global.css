@@ -97,3 +97,24 @@ img {
 #booking_frame {
     width: 100%;
 }
+
+#review {
+    padding-bottom: 100px;
+}
+
+#review h2 {
+    text-align: center;
+}
+
+#review * {
+    width: 75%;
+    display: inline-block;
+    text-align: left;
+    padding: 4px;
+}
+
+#review_of_booking div, #review_of_client div {
+    display: flex;
+    flex-direction: row;
+    gap: 5%;
+}

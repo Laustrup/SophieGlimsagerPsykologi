@@ -63,13 +63,19 @@ async function renderBookingParts() {
     }
 
     document.getElementById("booking_navigation_buttons").innerHTML = bookingNavigationButtons();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
+//TODO Change description as well
 async function changeBookingSiteState() {
-    if (siteState === "booking")
+    if (siteState === "booking") {
         siteState = "cancel";
-    else if (siteState === "cancel")
+        document.getElementById("booking_title").innerText = "Afmeld tid";
+    }
+    else if (siteState === "cancel") {
+        document.getElementById("booking_title").innerText = "Book tid";
         siteState = "booking";
+    }
 
     await bookingSection();
 }
