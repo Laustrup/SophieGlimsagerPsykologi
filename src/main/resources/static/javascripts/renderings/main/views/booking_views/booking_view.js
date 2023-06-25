@@ -1,7 +1,8 @@
 let booking = getBooking();
 const stepTitles = ["Detaljer om booking", "Udfyld skema", "Godkend, book og betal"];
 let stepIndex = 0,
-    bookingStep = localStorage.getItem("booking_step") === null ? stepTitles[0] : localStorage.getItem("booking_step"),
+    highestStep = sessionStorage.getItem("highest_booking_step") === null ? stepIndex : sessionStorage.getItem("highest_booking_step"),
+    bookingStep = sessionStorage.getItem("booking_step") === null ? stepTitles[0] : sessionStorage.getItem("booking_step"),
     siteState = "booking";
 
 async function renderBooking() {
@@ -29,33 +30,23 @@ async function renderBooking() {
 }
 
 async function bookingSection() {
-    document.getElementById("inner_booking_section").innerHTML = siteState === "booking" ? `
-        <section id="booking_steps_section">
-            <h3>Trin</h3>
-            <div id="booking_steps" class="details">
-                <div class="label_with_input">
-                    <input type="radio" id="step_1" name="booking_step" onclick="jumpBookingStep(${stepTitles[0]}).then()" ${bookingStep === stepTitles[0] ? "checked" : ""}>
-                    <label for="step_1" class="booking_step_label">${stepTitles[0]}</label>
-                </div>
-                <div class="label_with_input">
-                    <input type="radio" id="step_2" name="booking_step" onclick="jumpBookingStep(${stepTitles[1]}).then()" ${bookingStep === stepTitles[1] ? "checked" : ""}>
-                    <label for="step_2" class="booking_step_label">${stepTitles[1]}</label>
-                </div>
-                <div class="label_with_input">
-                    <input type="radio" id="step_3" name="booking_step" onclick="jumpBookingStep(${stepTitles[2]}).then()" ${bookingStep === stepTitles[2] ? "checked" : ""}>
-                    <label for="step_3" class="booking_step_label">${stepTitles[2]}</label>
-                </div>
-            </div>
-        </section>
+    const isBooking = siteState === "booking";
+
+    document.getElementById("inner_booking_section").innerHTML = isBooking ? `
+        <section id="booking_steps_section"></section>
         <section id="booking_frame"></section>
+        <section id="booking_navigation_buttons" class="navigation_buttons"></section>
     ` : `
         ${await cancelSection()}
     `;
 
-    await renderBookingStep();
+    if (isBooking)
+        await renderBookingParts();
 }
 
-async function renderBookingStep() {
+async function renderBookingParts() {
+    renderBookingSteps();
+
     switch (bookingStep) {
         case stepTitles[0]: {
             await renderCalendar();
@@ -70,6 +61,8 @@ async function renderBookingStep() {
             break;
         }
     }
+
+    document.getElementById("booking_navigation_buttons").innerHTML = bookingNavigationButtons();
 }
 
 async function changeBookingSiteState() {
@@ -81,31 +74,57 @@ async function changeBookingSiteState() {
     await bookingSection();
 }
 
-function bookingNavigationButtons() {
-    let buttons = ``;
+function renderBookingSteps() {
+    document.getElementById("booking_steps_section").innerHTML = `
+        <h3>Trin</h3>
+        <div id="booking_steps" class="details">
+            <div class="label_with_input">
+                <input type="radio" id="step_1" name="booking_step"
+                    onclick="jumpBookingStep('${stepTitles[0]}').then()"
+                    ${bookingStep === stepTitles[0] ? "checked" : ""}
+                >
+                <label for="step_1" class="booking_step_label">${stepTitles[0]}</label>
+            </div>
+            <div class="label_with_input">
+                <input type="radio" id="step_2" name="booking_step"
+                    onclick="jumpBookingStep('${stepTitles[1]}').then()"
+                    ${bookingStep === stepTitles[1] ? "checked" : ""}
+                    ${highestStep >= 1 ? "" : "disabled"}
+                >
+                <label for="step_2" class="booking_step_label">${stepTitles[1]}</label>
+            </div>
+            <div class="label_with_input">
+                <input type="radio" id="step_3" name="booking_step"
+                    onclick="jumpBookingStep('${stepTitles[2]}').then()"
+                    ${bookingStep === stepTitles[2] ? "checked" : ""}
+                    ${highestStep >= 2 ? "" : "disabled"}
+                >
+                <label for="step_3" class="booking_step_label">${stepTitles[2]}</label>
+            </div>
+        </div>
+    `;
+}
 
+function bookingNavigationButtons() {
     switch (bookingStep) {
-        case "1": {
-            buttons = `<button type="submit" class="neutral_button" onclick="nextBookingStep().then()">${stepTitles[1]}</button>`;
-            break;
+        case stepTitles[0]: {
+            return booking !== null && booking !== undefined
+                ? `<button type="submit" class="neutral_button" onclick="nextBookingStep().then()">Frem</button>`
+                : ``;
         }
-        case "2": {
-            buttons = `
-                <button type="button" class="neutral_button" onclick="previousBookingStep().then();">${stepTitles[0]}</button>
-                <button type="submit" class="neutral_button" onclick="nextBookingStep();">${stepTitles[2]}</button>
+        case stepTitles[1]: {
+            return `
+                <button type="button" class="neutral_button" onclick="previousBookingStep().then();">Tilbage</button>
+                <button type="submit" class="neutral_button" form="client_detail_form"">Frem</button>
             `;
-            break;
         }
-        case "3": {
-            buttons = `<button type="button" class="neutral_button" onclick="previousBookingStep()">${stepTitles[1]}</button>`;
+        case stepTitles[2]: {
+            return `<button type="button" class="neutral_button" onclick="previousBookingStep()">Tilbage</button>`;
+        }
+        default: {
+            return ``;
         }
     }
-
-    return `
-        <div class="navigation_buttons">
-            ${buttons}
-        </div>
-    `
 }
 
 async function previousBookingStep() {
@@ -113,26 +132,46 @@ async function previousBookingStep() {
     bookingStep = stepTitles[stepIndex];
     localStorage.setItem("booking_step",bookingStep);
     updateBookingRadio();
-    await renderBookingStep();
+    await renderBookingParts();
 }
 
 async function nextBookingStep() {
-    stepIndex++;
+    incrementBookingStep();
     bookingStep = stepTitles[stepIndex];
     localStorage.setItem("booking_step",bookingStep);
     updateBookingRadio();
-    await renderBookingStep();
+    await renderBookingParts();
 }
 
 async function jumpBookingStep(step) {
-    bookingStep = step;
-    bookingStep.forEach((element, index) => {
-        if (element === step)
-            stepIndex = index;
+    let stepIsAllowed = false,
+        stepIsNewHighestStep = false;
+
+    stepTitles.forEach((element, index) => {
+        if (element === step && index <= highestStep + 1) {
+            if (index > highestStep)
+                stepIsNewHighestStep = true;
+
+            incrementBookingStep(index);
+            stepIsAllowed = true;
+        }
     });
-    localStorage.setItem("booking_step",bookingStep);
-    updateBookingRadio();
-    await renderBookingStep();
+
+    if (stepIsAllowed) {
+        bookingStep = step;
+        localStorage.setItem("booking_step",bookingStep);
+        updateBookingRadio();
+        await renderBookingParts();
+    }
+
+    if (stepIsNewHighestStep)
+        renderBookingSteps();
+}
+
+function incrementBookingStep(index) {
+    stepIndex = index !== undefined && index !== null ? index : stepIndex + 1;
+    highestStep = stepIndex > highestStep ? stepIndex : highestStep;
+    sessionStorage.setItem("highest_booking_step",highestStep);
 }
 
 function updateBookingRadio() {

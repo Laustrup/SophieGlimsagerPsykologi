@@ -37,7 +37,7 @@ function inputField(field) {
                 })}
                 ${include({
                     doInclude: field.isRequired,
-                    value: `required`
+                    value: "required=\"required\""
                 })}
                 ${tagParam({
                     input: field.max,

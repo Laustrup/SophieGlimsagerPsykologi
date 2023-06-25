@@ -6,6 +6,5 @@ function renderBookingReview() {
             </div>
             <button class="positive_button">Book</button>
         </div>
-        ${bookingNavigationButtons()}
     `;
 }

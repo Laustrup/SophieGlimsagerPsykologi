@@ -51,7 +51,9 @@ async function renderCalendar() {
         }
     }
 
-    document.getElementById("booking_frame").innerHTML = html;
+    document.getElementById("booking_frame").innerHTML = `
+        <div id="calendar_frame">${html}</div>
+    `;
 }
 
 async function pickAvailableBooking(available) {

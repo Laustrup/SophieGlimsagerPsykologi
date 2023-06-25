@@ -1,4 +1,4 @@
-#booking_frame {
+#calendar_frame {
     background-color: var(--secondary-colour);
     width: 100%;
     display: grid;
@@ -9,7 +9,7 @@
     grid-template-rows: 100px repeat(14,80px);
 }
 
-#booking_frame *:not(.available):not(.calendar_field) {
+#calendar_frame *:not(.available):not(.calendar_field) {
     background-color: var(--secondary-colour);
 }
 

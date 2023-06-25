@@ -4,59 +4,59 @@ const startKey = "start", endKey = "end", subjectKey = "subject", titleKey = "ti
     clientBirthdateKey = "client_birthdate", consultationKey = "consultation", clientAgeKey = "age";
 
 function getBooking() {
-    return localStorage.getItem("has_stored_booking") === "true" ? {
-        start: localStorage.getItem(startKey),
-        end: localStorage.getItem(endKey),
-        subject: localStorage.getItem(subjectKey),
-        title: localStorage.getItem(titleKey),
-        description: localStorage.getItem(descriptionKey),
-        length: localStorage.getItem(lengthKey),
-        timestamp: localStorage.getItem(timestampKey),
-        isBooked: localStorage.getItem(isBookedKey),
+    return sessionStorage.getItem("has_stored_booking") === "true" ? {
+        start: sessionStorage.getItem(startKey),
+        end: sessionStorage.getItem(endKey),
+        subject: sessionStorage.getItem(subjectKey),
+        title: sessionStorage.getItem(titleKey),
+        description: sessionStorage.getItem(descriptionKey),
+        length: sessionStorage.getItem(lengthKey),
+        timestamp: sessionStorage.getItem(timestampKey),
+        isBooked: sessionStorage.getItem(isBookedKey),
         client: getClient()
     } : null;
 }
 
 function getClient() {
-    return localStorage.getItem("has_stored_client") === "true" ? {
-        id: localStorage.getItem(clientIdKey),
-        name: localStorage.getItem(clientNameKey),
-        email: localStorage.getItem(clientEmailKey),
-        phone: localStorage.getItem(clientPhoneKey),
-        birthdate: localStorage.getItem(clientBirthdateKey),
-        consultation: localStorage.getItem(consultationKey),
-        age: localStorage.getItem(clientAgeKey)
+    return sessionStorage.getItem("has_stored_client") === "true" ? {
+        id: sessionStorage.getItem(clientIdKey),
+        name: sessionStorage.getItem(clientNameKey),
+        email: sessionStorage.getItem(clientEmailKey),
+        phone: sessionStorage.getItem(clientPhoneKey),
+        birthdate: sessionStorage.getItem(clientBirthdateKey),
+        consultation: sessionStorage.getItem(consultationKey),
+        age: sessionStorage.getItem(clientAgeKey)
     } : null;
 }
 
 function storeBooking(booking) {
-    localStorage.setItem(startKey, booking.start);
-    localStorage.setItem(endKey, booking.end);
+    sessionStorage.setItem(startKey, booking.start);
+    sessionStorage.setItem(endKey, booking.end);
     if (booking.subject !== undefined)
-        localStorage.setItem(subjectKey, booking.subject);
+        sessionStorage.setItem(subjectKey, booking.subject);
     if (booking.title !== undefined)
-        localStorage.setItem(titleKey, booking.title);
+        sessionStorage.setItem(titleKey, booking.title);
     if (booking.description !== undefined)
-        localStorage.setItem(descriptionKey, booking.description);
-    localStorage.setItem(timestampKey, booking.timestamp);
-    localStorage.setItem(lengthKey, booking.length);
+        sessionStorage.setItem(descriptionKey, booking.description);
+    sessionStorage.setItem(timestampKey, booking.timestamp);
+    sessionStorage.setItem(lengthKey, booking.length);
     if (booking.isBooked !== undefined)
-        localStorage.setItem(isBookedKey, booking.isBooked);
+        sessionStorage.setItem(isBookedKey, booking.isBooked);
     if (booking.client !== undefined)
         storeToClient();
 
-    localStorage.setItem("has_stored_booking", "true");
+    sessionStorage.setItem("has_stored_booking", "true");
 }
 
 function storeToClient(client) {
-    localStorage.setItem(clientIdKey, client.id);
-    localStorage.setItem(clientNameKey, client.name);
-    localStorage.setItem(clientEmailKey, client.email);
-    localStorage.setItem(clientPhoneKey, client.phone);
-    localStorage.setItem(clientBirthdateKey, client.birthdate);
-    localStorage.setItem(consultationKey, client.consultation);
-    localStorage.setItem(clientAgeKey, client.age);
-    localStorage.setItem("has_stored_client", "true");
+    sessionStorage.setItem(clientIdKey, client.id);
+    sessionStorage.setItem(clientNameKey, client.name);
+    sessionStorage.setItem(clientEmailKey, client.email);
+    sessionStorage.setItem(clientPhoneKey, client.phone);
+    sessionStorage.setItem(clientBirthdateKey, client.birthdate);
+    sessionStorage.setItem(consultationKey, client.consultation);
+    sessionStorage.setItem(clientAgeKey, client.age);
+    sessionStorage.setItem("has_stored_client", "true");
 }
 
 function translateToBookings(bookings) {

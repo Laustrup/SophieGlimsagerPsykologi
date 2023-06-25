@@ -1,6 +1,6 @@
 function renderClientDescriptionForm() {
     document.getElementById("booking_frame").innerHTML =  `
-        <form>
+        <form id="client_detail_form" class="booking_section_form" onsubmit="nextBookingStep();">
             <div class="input_fields">
                 <div id="booking_description_fields">
                     <p>Angående samtalen</p>
@@ -65,7 +65,6 @@ function renderClientDescriptionForm() {
                     })}
                 </div>
             </div>
-            ${bookingNavigationButtons()}
         </form>
     `;
 }

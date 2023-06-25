@@ -12,7 +12,7 @@ li:hover {
     color: var(--positive-colour);
 }
 
-button{
+button, .button{
     display: inline-block;
     width: 100px;
     background-color: gray;

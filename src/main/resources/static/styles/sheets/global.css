@@ -93,3 +93,7 @@ img {
 
     object-fit: cover;
 }
+
+#booking_frame {
+    width: 100%;
+}
